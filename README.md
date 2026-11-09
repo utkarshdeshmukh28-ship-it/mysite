@@ -45,6 +45,23 @@ GitHub Pages is static hosting (it does not execute PHP), so the repo ships a pr
 
 Any normal PHP host (cPanel, shared hosting, VPS) can serve `index.php` directly.
 
+## Page order (top to bottom)
+
+Hero → Clients (brands served and promoted) → The Real Problem → Who We Are → Leadership → Method → Services →
+Prestige galleries (with text interludes between them) → Proof / Results → Start Here → **Contact form** → Industries (the 17 kinds of business).
+The order is set in one line in `index.php`; the nav links in `data/content.php` must follow the same order.
+
+## Contact form → your Gmail
+
+The form on the Contact section emails every enquiry (Name, Email, optional Phone, Message) to the address in
+`data/content.php → contact → email`, using the free [FormSubmit](https://formsubmit.co) service (no server needed).
+
+**One-time activation (required):** after the site is live, send yourself one test message from the form.
+FormSubmit emails an *Activate Form* link to that Gmail address (check Spam / Promotions). Click it once. From then on
+every enquiry arrives in your inbox within seconds. Replying to the email replies straight to the visitor.
+
+If sending ever fails, the visitor sees a message with a pre-filled "email directly" link, so no lead is lost.
+
 ## Editing
 
 1. Change text in `data/content.php` (or images in `assets/img/`).

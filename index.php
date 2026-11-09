@@ -8,7 +8,7 @@ require __DIR__ . '/includes/helpers.php';
 $c = require __DIR__ . '/data/content.php';
 
 include __DIR__ . '/includes/head.php';
-foreach (['hero','problem','about','leadership','method','services','capabilities','clients','prestige','results','start','contact'] as $part) {
+foreach (['hero','clients','problem','about','leadership','method','services','prestige','results','start','contact','capabilities'] as $part) {
   include __DIR__ . '/sections/' . $part . '.php';
 }
 include __DIR__ . '/includes/footer.php';

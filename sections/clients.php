@@ -1,5 +1,5 @@
 <?php $cl = $c['clients']; ?>
-<section class="sec sec--light sec--flush" id="clients">
+<section class="sec sec--light" id="clients">
   <div class="wrap">
     <?php sec_head($cl['label']); ?>
     <h2 class="h2 reveal"><?= e($cl['title']) ?></h2>

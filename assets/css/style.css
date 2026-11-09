@@ -95,6 +95,9 @@ section[class*="sec--"]{background:var(--bg);color:var(--fg)}
 @media (min-width:1024px){
   .menu{display:flex}.nav-cta{display:inline-flex;margin-left:8px}.burger{display:none}
 }
+@media (min-width:1024px) and (max-width:1199.98px){
+  .nav-in{gap:16px}.menu{gap:11px}.menu a{font-size:.78rem;letter-spacing:.02em}.brand{letter-spacing:.16em}.nav-cta{margin-left:0}
+}
 
 /* ---- hero ---- */
 .hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:calc(var(--nav-h) + 40px) 0 56px}
@@ -102,6 +105,7 @@ section[class*="sec--"]{background:var(--bg);color:var(--fg)}
 .hero .eyebrow{color:#a4a29b}
 .hero .display{margin-top:clamp(18px,2.5vw,30px)}
 .hero .lead{margin-top:clamp(20px,2.5vw,30px)}
+.hero-cta{margin-top:clamp(22px,3vw,32px)}
 .hero-foot{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-top:clamp(44px,8vh,96px)}
 .origin{font:700 clamp(.78rem,1.2vw,1rem)/1.5 var(--f-head);letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);text-align:right}
 .rings{position:absolute;inset:0;pointer-events:none;z-index:1}
@@ -239,14 +243,32 @@ section[class*="sec--"]{background:var(--bg);color:var(--fg)}
 }
 .banner--center{margin-top:clamp(28px,4vw,44px)}
 
-/* ---- prestige gallery (justified rows) ---- */
-.gallery-block+.gallery-block{margin-top:clamp(48px,7vw,96px)}
-.gallery{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(20px,3vw,32px)}
-.tile{position:relative;overflow:hidden;background:var(--ink-2);flex:calc(var(--r)*100) 1 calc(var(--r)*150px);min-width:0;aspect-ratio:var(--r);display:block;cursor:zoom-in}
+/* ---- prestige: justified galleries + text interludes ----
+   Rows fill the width; a short last row is capped (--rowmax) and centred instead of
+   stretching into a huge picture, so no image ever appears oversized. */
+.prestige{padding-block:0}
+.gblock{padding-block:clamp(56px,8vw,104px)}
+.gblock--first{padding-top:clamp(64px,9vw,120px)}
+.gallery{--row:150px;--rowmax:200px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:clamp(20px,3vw,32px)}
+.tile{position:relative;overflow:hidden;background:var(--ink-2);flex:calc(var(--r)*100) 1 calc(var(--r)*var(--row));max-width:calc(var(--r)*var(--rowmax));min-width:0;aspect-ratio:var(--r);display:block;cursor:zoom-in}
 .tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .4s}
 @media (hover:hover){.tile:hover img{transform:scale(1.06)}}
-@media (max-width:560px){.tile{flex-basis:calc(var(--r)*110px)}}
+@media (max-width:560px){.gallery{--row:118px;--rowmax:175px;gap:6px}}
 .sec--dark .fine{color:#8b8984}
+
+.interlude{position:relative;overflow:hidden;background:var(--bg);color:var(--fg);padding-block:clamp(56px,8vw,104px)}
+.interlude--yellow{--bg:var(--yellow);--fg:#0f0f0f;--mut:#2b2a26}
+.interlude--paper{--bg:var(--paper);--fg:#0f0f0f;--mut:#5b5a56}
+.interlude::before,.interlude::after{content:"";position:absolute;border:1px solid currentColor;opacity:.14;border-radius:50%;pointer-events:none;top:50%;aspect-ratio:1;transform:translateY(-50%)}
+.interlude::before{width:clamp(280px,38vw,560px);right:calc(clamp(280px,38vw,560px)*-.35)}
+.interlude::after{width:clamp(170px,24vw,360px);right:calc(clamp(170px,24vw,360px)*-.1)}
+.interlude-in{position:relative;z-index:1;display:grid;gap:clamp(20px,3vw,36px)}
+.interlude .eyebrow{color:var(--fg);display:block}
+.interlude-title{font:700 clamp(1.9rem,4.2vw,3.4rem)/1.06 var(--f-head);letter-spacing:-.03em;margin-top:14px;text-wrap:balance;max-width:20ch}
+.interlude-copy p{font-size:clamp(1.02rem,1.1vw + .7rem,1.3rem);line-height:1.55;color:var(--mut);max-width:46ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chips li{border:1.5px solid currentColor;border-radius:999px;padding:9px 18px;font:700 .8rem var(--f-head);letter-spacing:.06em}
+@media (min-width:900px){.interlude-in{grid-template-columns:1.15fr .85fr;align-items:center;gap:clamp(40px,6vw,96px)}}
 
 /* ---- lightbox ---- */
 .lightbox{border:0;padding:0;background:transparent;max-width:100vw;max-height:100dvh;width:100%;height:100%;color:#fff}
@@ -325,20 +347,67 @@ section[class*="sec--"]{background:var(--bg);color:var(--fg)}
 .callout p:last-child{font-size:.98rem;max-width:22ch}
 @media (min-width:960px){.eng{grid-template-columns:1.7fr .8fr}}
 
-/* ---- contact ---- */
-.contact{overflow:hidden;padding-bottom:clamp(120px,22vw,300px)}
+/* ---- contact (form + details) ---- */
+.contact{overflow:hidden;padding-bottom:clamp(110px,16vw,230px)}
 .ghost{position:absolute;left:50%;bottom:-.12em;transform:translateX(-50%);font:700 clamp(4.2rem,22vw,22rem)/.8 var(--f-head);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.1);white-space:nowrap;pointer-events:none;user-select:none}
 .contact .wrap{position:relative;z-index:1}
-.contact-grid{display:grid;gap:clamp(36px,6vw,80px)}
-.contact .display{margin-top:clamp(18px,2.5vw,30px);font-size:clamp(2.8rem,7vw,5.6rem)}
-.who{margin-top:clamp(18px,2.5vw,28px);color:var(--mut)}
+.contact-grid{display:grid;gap:clamp(44px,6vw,80px)}
+.contact-main .display{margin-top:clamp(14px,2vw,22px);font-size:clamp(2.6rem,6vw,4.8rem)}
+.contact-main .lead{max-width:46ch}
+@media (min-width:900px){.contact-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start}}
+
+.cform{margin-top:clamp(26px,3.5vw,40px);display:grid;gap:14px;max-width:560px}
+.cform[hidden]{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.field{position:relative}
+.field .ico{position:absolute;left:20px;top:27px;transform:translateY(-50%);width:20px;height:20px;color:var(--yellow);pointer-events:none}
+.field input,.field textarea{display:block;width:100%;height:54px;background:var(--ink-2);color:#f4f3ef;border:1.5px solid rgba(255,255,255,.16);border-radius:999px;padding:0 20px 0 54px;font:400 16px/1.4 var(--f-body);transition:border-color .2s,box-shadow .2s,background .2s;-webkit-appearance:none;appearance:none}
+.field textarea{height:auto;min-height:150px;border-radius:28px;padding:16px 20px 16px 54px;line-height:1.5;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#8b8984;opacity:1}
+.field input:hover,.field textarea:hover{border-color:rgba(255,255,255,.3)}
+.field input:focus,.field textarea:focus{outline:0;border-color:var(--yellow);background:#202020;box-shadow:0 0 0 4px rgba(249,216,74,.18)}
+.field.bad input,.field.bad textarea{border-color:#ff8a7a}
+.err{display:none;margin:6px 20px 0;font-size:.85rem;line-height:1.4;color:#ff9d8f}
+.field.bad .err{display:block}
+.btn--block{width:100%;justify-content:center;height:56px;margin-top:4px;font-size:1rem}
+.btn-arrow{transition:transform .25s var(--ease)}
+.btn:hover .btn-arrow{transform:translateX(4px)}
+.spin{display:none;width:18px;height:18px;border:2.5px solid rgba(15,15,15,.25);border-top-color:#0f0f0f;border-radius:50%;animation:spin .7s linear infinite}
+.cform.is-sending .spin{display:inline-block}
+.cform.is-sending .btn-arrow{display:none}
+.cform.is-sending .btn{pointer-events:none;opacity:.85}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-note{font-size:.85rem;color:var(--mut);text-align:center}
+.form-status:empty{display:none}
+.form-status.is-error{background:rgba(255,138,122,.1);border:1px solid rgba(255,138,122,.4);color:#ffc0b6;padding:14px 18px;border-radius:18px;font-size:.95rem}
+.form-status.is-error a{color:var(--yellow);text-decoration:underline}
+.cdone{margin-top:clamp(26px,3.5vw,40px);max-width:560px;padding:clamp(24px,3vw,36px);border:1.5px solid var(--yellow);border-radius:28px;background:rgba(249,216,74,.06);animation:rise .9s var(--ease-out) backwards}
+.cdone[hidden]{display:none}
+.cdone:focus{outline:0}
+.tick{display:grid;place-content:center;width:52px;height:52px;border-radius:50%;background:var(--yellow);color:#0f0f0f}
+.tick svg{width:26px;height:26px}
+.cdone-title{font:700 clamp(1.5rem,3vw,2rem)/1.15 var(--f-head);letter-spacing:-.02em;margin-top:18px}
+.cdone p{margin-top:10px;color:var(--mut)}
+.cdone strong{color:#f4f3ef;word-break:break-word}
+.cdone .btn{margin-top:22px}
+
+.contact-side{display:flex;flex-direction:column;gap:clamp(22px,3vw,34px)}
+.illus{display:none}
+@media (min-width:700px){.illus{display:block;width:100%;max-width:480px;margin-inline:auto}}
+.illus-svg{display:block;width:100%;height:auto;overflow:visible}
+.illus-env{animation:bob 8s ease-in-out -3s infinite}
+.illus-b1{animation:bob 6s ease-in-out infinite}
+.illus-b2{animation:bob 7s ease-in-out -2s infinite}
+.illus-b3{animation:bob 5.5s ease-in-out -1s infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.who-name{font:700 clamp(1.5rem,2.6vw,2rem)/1.1 var(--f-head);letter-spacing:-.02em}
+.who{margin-top:8px;color:var(--mut)}
 .reach{display:flex;flex-direction:column;align-items:flex-start;gap:0}
 .reach-row{width:100%;display:flex;flex-direction:column;gap:6px;padding:20px 0;border-top:1px solid var(--line)}
 .reach-row:last-of-type{border-bottom:1px solid var(--line)}
 .big-link{font:700 clamp(1.15rem,2.6vw,1.75rem)/1.35 var(--f-head);letter-spacing:-.015em;word-break:break-word;transition:color .2s;width:fit-content}
 .big-link:hover{color:var(--yellow)}
-.reach .btn{margin-top:28px}
-@media (min-width:900px){.contact-grid{grid-template-columns:1fr 1fr;align-items:end}}
 
 /* ---- footer ---- */
 .foot{background:var(--ink);color:#8b8984;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;padding:22px 0 calc(22px + env(safe-area-inset-bottom))}
@@ -355,12 +424,18 @@ section[class*="sec--"]{background:var(--bg);color:var(--fg)}
 .js .reveal.rv-now{animation:none}            /* already scrolled past: show instantly */
 @keyframes rise{from{opacity:0;transform:translate3d(0,var(--rise),0)}to{opacity:1;transform:none}}
 
-/* ---- print + motion preferences ---- */
+/* ---- motion preferences ----
+   "Reduce motion" (common on Macs) removes movement and loops but keeps a gentle
+   fade-in, so the page still feels alive and the scroll effect is still visible. */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .reveal,.js .reveal:not(.in),.js .fill,.js .vbars .v{opacity:1!important;transform:none!important}
+  .rings b,.illus-svg *,.spin{animation:none!important}
+  .js .fill,.js .vbars .v{transform:none!important;transition:none!important}
+  .js .reveal.in{animation:fade .9s ease var(--d,0s) backwards}
+  .js .reveal.rv-now{animation:none}
+  .cdone{animation:fade .6s ease backwards}
 }
+@keyframes fade{from{opacity:0}to{opacity:1}}
 @media print{
   .nav,.progress,.rings,.burger{display:none}
   .js .reveal,.js .reveal:not(.in){opacity:1!important;transform:none!important;animation:none!important}

@@ -11,20 +11,21 @@ return [
     'description' => 'Utkarsh Deshmukh is a 360° design, media and marketing consultancy. Brand strategy, marketing and reputation — engineered for attention, built for trust. Indian origin, available globally.',
     // Set your live URL (no trailing slash) to enable canonical + social preview tags.
     // e.g. 'https://yourname.github.io/utkarsh-deshmukh'
-    'url'         => '',
+    'url'         => 'https://www.utkarshdeshmukh.com',
     'year'        => '2026',
   ],
 
+  // Order matches the page order top to bottom (the active-link highlight relies on it).
   'nav' => [
+    ['#clients',      'Clients'],
     ['#about',        'About'],
     ['#leadership',   'Leadership'],
     ['#method',       'Method'],
     ['#services',     'Services'],
-    ['#capabilities', 'Work'],
-    ['#clients',      'Clients'],
     ['#prestige',     'Prestige'],
     ['#results',      'Results'],
     ['#contact',      'Contact'],
+    ['#capabilities', 'Industries'],
   ],
 
   'hero' => [
@@ -34,6 +35,7 @@ return [
     'sub'      => 'Brand strategy, marketing and reputation — engineered for attention, built for trust.',
     'tag'      => ['Indian origin', 'Available globally'],
     'badge'    => 'Company Profile · 2026',
+    'cta'      => 'Start a conversation →',
   ],
 
   'stats' => [
@@ -203,6 +205,20 @@ return [
 
   'prestige' => [
     'label' => 'Our Prestige',
+    // Text bands shown between the image galleries (key = index of the gallery they follow).
+    // Wording is drawn from the method, the 3Ls and the "Indian origin · available globally" line.
+    'interludes' => [
+      0 => ['tone' => 'yellow', 'eyebrow' => 'Behind the posters',
+            'title' => 'Creative gets attention. Strategy keeps it.',
+            'text'  => 'Every campaign here began with one question: how does the audience actually see this brand, and what do they need to believe? The design came after the answer.'],
+      1 => ['tone' => 'paper',  'eyebrow' => 'Indian origin · Available globally',
+            'title' => 'The same method, from global names to neighbourhood brands.',
+            'text'  => 'Sportswear, footwear, clinics, malls, political campaigns: the method does not change. Perceive how you are seen, position what only you can own, and perform with every rupee tracked.'],
+      2 => ['tone' => 'yellow', 'eyebrow' => 'Powered by the 3Ls',
+            'title' => 'Attention is only the start.',
+            'text'  => 'Great creative earns a look. Lead generation, lead conversion and lead nurturing turn that look into business.',
+            'chips' => ['Lead Generation', 'Lead Conversion', 'Lead Nurturing']],
+    ],
     'copyright' => 'Brand campaign creatives © their respective owners, shown as campaigns promoted by Utkarsh Deshmukh.',
     'galleries' => [
       [
@@ -229,7 +245,6 @@ return [
           ['global-crocs-1.jpg', 'Crocs campaign'],
           ['global-nike-2.jpg',  'Nike campaign'],
           ['global-puma-2.jpg',  'Puma campaign'],
-          ['global-crocs-2.jpg', 'Crocs campaign'],
         ],
       ],
       [
@@ -344,6 +359,12 @@ return [
     'role'    => 'Founder',
     'tagline' => 'Rooted in India · Expanding across the globe',
     'email'   => 'utkarshdeshmukh28@gmail.com',
+    'form'    => [
+      'title'    => 'Contact us',
+      'text'     => 'Tell us about your brand and what you want to achieve. Your message goes straight to Utkarsh’s inbox.',
+      'note'     => 'Name, email and message are required. Phone is optional.',
+      'subject'  => 'New website enquiry',
+    ],
     'phones'  => [
       ['+91 86000 37030', '+918600037030'],
       ['+91 94030 69009', '+919403069009'],

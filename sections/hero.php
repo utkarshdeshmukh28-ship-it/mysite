@@ -11,14 +11,15 @@
     </h1>
     <p class="lead reveal" style="--d:.2s"><?= e($h['sub']) ?></p>
     <span class="bar reveal" style="--d:.3s" aria-hidden="true"></span>
+    <a class="btn hero-cta reveal" style="--d:.35s" href="#contact"><?= e($h['cta']) ?></a>
 
     <div class="hero-foot">
-      <dl class="stats reveal" style="--d:.35s">
+      <dl class="stats reveal" style="--d:.4s">
         <?php foreach ($c['stats'] as [$n, $l]): ?>
           <div><dt><?= e($n) ?></dt><dd><?= e($l) ?></dd></div>
         <?php endforeach; ?>
       </dl>
-      <p class="origin reveal" style="--d:.45s"><?= e($h['tag'][0]) ?><br><?= e($h['tag'][1]) ?></p>
+      <p class="origin reveal" style="--d:.5s"><?= e($h['tag'][0]) ?><br><?= e($h['tag'][1]) ?></p>
     </div>
   </div>
 </section>

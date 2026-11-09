@@ -14,6 +14,6 @@
   <p class="lb-cap"></p>
 </dialog>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=<?= filemtime(__DIR__ . '/../assets/js/main.js') ?>" defer></script>
 </body>
 </html>
